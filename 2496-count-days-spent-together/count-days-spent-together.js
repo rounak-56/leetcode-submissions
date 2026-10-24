@@ -13,13 +13,6 @@ var countDaysTogether = function(arriveAlice, leaveAlice, arriveBob, leaveBob) {
     const bobArrive = ((daysPrefix[parseInt(arriveBob.slice(0, 2)) - 2]) || 0) + parseInt(arriveBob.slice(-2))
     const bobLeave = ((daysPrefix[parseInt(leaveBob.slice(0, 2)) - 2]) || 0) + parseInt(leaveBob.slice(-2))
 
-    console.log(aliceArrive)
-    console.log(aliceLeave)
-    console.log()
-    console.log(bobArrive)
-    console.log(bobLeave)
-
     if(aliceLeave < bobArrive || bobLeave < aliceArrive) return 0
-    else return aliceArrive <= bobArrive ?  
-                Math.min(aliceLeave, bobLeave) - bobArrive + 1 : Math.min(aliceLeave, bobLeave) - aliceArrive + 1
+    else return Math.min(aliceLeave, bobLeave) - (aliceArrive <= bobArrive ? bobArrive : aliceArrive) + 1
 };
